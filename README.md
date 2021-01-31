@@ -9,5 +9,5 @@ The contents are listed below:
 ####  (1) Result by proposed method 
 ####  (2) Results by Faster RCNN
 ## 3. Executable program
-#### includes Matlab pcode, instruction and data for tests
+#### includes Matlab pcode, instruction and image data for test
 
