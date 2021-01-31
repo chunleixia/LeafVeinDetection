@@ -1,0 +1,77 @@
+function  [Status]=ShowLeafDirectionNumber(number)
+
+
+
+  filename= ['Numerous leaves/' number '.jpg'];   
+  I = imread(filename);
+    
+ filename=['Numerous leaves/' number '/Skeleton/LeafNum2.txt']; 
+ fid=fopen(filename,'r');%打开txt文件
+ LeafNum=fscanf(fid,'%f',1);
+ fclose(fid);
+    
+ IShow=I;
+ a1=IShow(:,:,1);
+ a2=IShow(:,:,2);
+ a3=IShow(:,:,3); 
+    
+  [m,n]=size(a1);
+    % 显示已识别的骨架，用黑色标记
+    for kk=1:LeafNum %  LeafNum  1:1:LeafNum    
+      
+        is1=num2str(kk); number1 = '000'; 
+          number1(end-length(is1)+1:end)=is1; 
+
+          filename=['Numerous leaves/' number '/Skeleton/SubStem_2_' number1 '.bmp'];   
+          I1 = imread(filename);  
+            for u=1:m 
+              for v=1:n
+                  if I1(u,v)>0
+                       a1(u,v)= 0;a2(u,v)=0; a3(u,v)=0;            
+                  end        
+              end 
+           end;
+     end
+
+     IShow(:,:,1)=uint8(a1);
+     IShow(:,:,2)=uint8(a2);
+     IShow(:,:,3)=uint8(a3);
+
+% 标记方向与骨架编号
+    close all;
+     h=figure
+     imshow(IShow);
+     hold on;
+     for kk=1:LeafNum %  LeafNum  1:1:LeafNum
+    
+       is1=num2str(kk); number1 = '000'; 
+       number1(end-length(is1)+1:end)=is1; 
+       filename=['Numerous leaves/' number '/Skeleton/SubStem_2_' number1 '_ZX.txt']; 
+       fid=fopen(filename,'r');%打开txt文件
+       [cxy,count]=fscanf(fid,'%f',2);
+       cx=cxy(1);
+       cy=cxy(2);
+       fclose(fid); 
+       cx=double(cx);
+       cy=double(cy);
+       text(cy,cx,num2str(kk),'horiz','left','color','b','fontsize',10);
+       filename=['Numerous leaves/' number '/Skeleton/SubStem_2_' number1 '_RotateAngle.txt'];       
+       fid=fopen(filename,'r');%打开txt文件
+       Angle=fscanf(fid,'%f',1);
+       fclose(fid);   
+  
+       DirecAngle=mod(Angle-90,360);
+       quiver( cy, cx, 50*cos(DirecAngle*pi/180.0), 50*sin(DirecAngle*pi/180.0),'Color','r','LineWidth',3,'maxheadsize',5.1);   
+       plot(cy,cx,'*-','MarkerEdgeColor','k','MarkerSize',5);  
+   
+     end
+    
+     filename=['Numerous leaves/' number 'LeafDirections.bmp'];
+     saveas(h,filename);       
+
+  
+
+
+
+
+    
