@@ -1,4 +1,4 @@
-# LeafVeinDetection
+#  Detection of individual leaves from leaf veins
 
 This repository contains the supplementary materials of our work entitled "A coarse-to-fine leaf detection approach based on leaf skeleton identification and joint segmentation", which is under review for Biosystems engineering.
 The contents are listed below:
