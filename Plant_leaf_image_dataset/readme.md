@@ -9,4 +9,6 @@ The leaf images are divided into four types according to the complexity of the s
 (d) images with numerous leaves  
 ![Examples of leaves](https://github.com/chunleixia/LeafVeinDetection/blob/main/Plant_leaf_image_dataset/Four-types%20of%20leaves.jpg)  
 
+![Image-set description](https://github.com/chunleixia/LeafVeinDetection/blob/main/Plant_leaf_image_dataset/Decription-image-set.jpg)
+
 
