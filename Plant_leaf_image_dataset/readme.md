@@ -11,4 +11,7 @@ The leaf images are divided into four types according to the complexity of the s
 
 ![Image-set description](https://github.com/chunleixia/LeafVeinDetection/blob/main/Plant_leaf_image_dataset/Decription-image-set.jpg)
 
+## Annotation
+Target leaves are annotated by using lableImg in PASCAL VOC format.  
+Annotation files are provided in the folder with the images.
 
